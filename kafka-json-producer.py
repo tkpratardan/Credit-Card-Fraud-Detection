@@ -26,24 +26,28 @@ class Producer(threading.Thread):
     producer.close()
     
     
- def main():
+def main():
     tasks = [
-           Producer(),
-           ]
+        Producer(),
+    ]
+
     for t in tasks:
-    t.start()
-    
+        t.start()
+
     time.sleep(10)
     
     for task in tasks:
-        tak.stop()
-        
+        task.stop()
+
     for task in tasks:
         task.join()
         
-
-if __name__ == '__main__':
-    loggevel = logging.INFOs.%(mescs)s:%(name)s:%(thread)d:%(levelname)s:%(process)d:%(message)s' , main()
-    
+        
+if __name__ == "__main__":
+    logging.basicConfig(
+        format='%(asctime)s.%(msecs)s:%(name)s:%(thread)d:%(levelname)s:%(process)d:%(message)s',
+        level=logging.INFO
+        )
+    main()
     
     
