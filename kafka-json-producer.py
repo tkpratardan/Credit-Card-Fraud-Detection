@@ -7,25 +7,25 @@ from kafka import KafkaProducer
 
 class Producer(threading.Thread):
     def __init__(self):
-    threading.Thread = threading.Event()
-    self.stop_event = threading.Event()
-    
+        threading.Thread.__init__(self)
+        self.stop_event = threading.Event()
+        
     def stop(self):
         self.stop_event.set()
-        
+
     def run(self):
-    producer = KafkaProducer(bootstrap_servers = 'localhost:9992', value_serializer=lamba m: json.dumps(m).encode('ascii'))
-    
-    with open('credit-test.json') as json_file:
-        data = json.load(json_file)
-        for p in data:
-            print (p)
-            producer.send('credit-card-tx',p)
-            time.sleep(5)
-            
-    producer.close()
-    
-    
+        producer = KafkaProducer(bootstrap_servers='localhost:9092', value_serializer=lambda m: json.dumps(m).encode('ascii'))
+
+        with open('credit_test.json') as json_file:
+            data = json.load(json_file)
+            for p in data:
+                print (p)
+                producer.send('credit-card-tx', p)
+                time.sleep(5)
+
+        producer.close()
+
+        
 def main():
     tasks = [
         Producer(),
@@ -49,5 +49,3 @@ if __name__ == "__main__":
         level=logging.INFO
         )
     main()
-    
-    
