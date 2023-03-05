@@ -14,6 +14,7 @@ ML:
    Sampling : standardscaler; Imbalanced-learn(smote, smoteenn) since the data is highly imbalanced
    Model for Kafka client and model for REST(Flask) interface
 
+Source of Data: URL : https://www.kaggle.com/datasets/mlg-ulb/creditcardfraud?resource=download  (API command: kaggle datasets download -d mlg-ulb/creditcardfraud)
 
 KAFKA MODEL:
    1. Simulate Kafka producer to produce kafka tx records (serialising json contents of a new transaction)
@@ -21,7 +22,8 @@ KAFKA MODEL:
    3. As and when kafka consumer gets a message, the transaction data is used ot predict if it is a fraud 
 
 REST (flask) MODEL:
-   1. 
+   1. Model predict function is behind rest interface
+   2. REST api invocations calls with feature params
    
 
 Code flow:
