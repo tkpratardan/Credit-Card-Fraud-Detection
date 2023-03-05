@@ -17,7 +17,7 @@ ML:
 
 KAFKA MODEL:
    1. Simulate Kafka producer to produce kafka tx records (serialising json contents of a new transaction)
-   2. Kafka consumer is subscribed to topic
+   2. Kafka consumer is subscribed to topic ('credit-card-tx')
    3. As and when kafka consumer gets a message, the transaction data is used ot predict if it is a fraud 
 
 REST (flask) MODEL:
