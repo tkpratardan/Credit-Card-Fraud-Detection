@@ -60,7 +60,7 @@ class BuildMlPipeline:
             
             gs = GridSearchCV(pipeline, param_grid = param_grid, n_jobs = -1, cv=5)
             gs.fit(trainX, trainY)
-            #dump(gs, 'model' + 'idx+'.pipleline)
+            dump(gs, 'model' + str(idx)+'.pipleline')
             self.gs_piplelines.append(gs)
             
     def score(self, testX, testY):
