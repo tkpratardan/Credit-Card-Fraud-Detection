@@ -36,6 +36,11 @@ class CassandraReadWriteDb:
     tx_info.columns = q.keys()
     return tx_info
     
+  def write_json_table(self, data):
+    print(data)
+    self.typeOfClass.create(**dict(data))
+    
+    
 if __name__ == '__main__':
     cwd = CassandraReadWriteDb(ip_addrs=['172.17.0.2'], keyspace = "emp")
     cwd.sync_class_table(TxInfoModel)
